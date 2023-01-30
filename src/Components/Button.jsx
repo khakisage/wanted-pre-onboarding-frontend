@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-export default function Button({ children, onClick }) {
+export default function Button({ children, onClick, disabled }) {
   const btnStyle = css({
     width: "100px",
     height: "50px",
@@ -23,7 +23,7 @@ export default function Button({ children, onClick }) {
     },
   });
   return (
-    <button css={btnStyle} onClick={onClick}>
+    <button css={btnStyle} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

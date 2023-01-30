@@ -2,13 +2,14 @@
 import { css } from "@emotion/react";
 import React, { useEffect, useState } from "react";
 import Button from "../Components/Button";
+import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const [isEnable, setIsEnabled] = useState(false);
   const [account, setAccount] = useState({
     email: "",
     password: "",
   });
-  console.log("account", account);
+  const navigate = useNavigate();
   const validation = () => {
     if (account.email.includes("@") && account.password.length >= 8) {
       setIsEnabled(true);
@@ -16,8 +17,30 @@ export default function Signup() {
       setIsEnabled(false);
     }
   };
-
-  //const validation = !(account.email.includes("@") && account.password.length);
+  useEffect(() => {
+    validation();
+  });
+  const url = `https://pre-onboarding-selection-task.shop`;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await fetch(`${url}/auth/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: account.email,
+        password: account.password,
+      }),
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          navigate("/signin");
+          console.log("회원가입 성공");
+        }
+      })
+      .catch((err) => alert("회원가입 실패"));
+  };
   const formStyle = css({
     display: "flex",
     flexDirection: "column",
@@ -45,26 +68,7 @@ export default function Signup() {
       },
     },
   });
-  const btnStyle = css({
-    width: "100px",
-    height: "50px",
-    margin: "5px",
-    backgroundColor: "lightgrey",
-    border: "1px solid #e5e5e5",
-    borderRadius: "5px",
-    color: "black",
-    fontSize: "15px",
-    fontWeight: "bold",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "grey",
-      color: "white",
-    },
-    "&:active": {
-      backgroundColor: "black",
-      color: "white",
-    },
-  });
+
   return (
     <>
       <form css={formStyle}>
@@ -92,13 +96,19 @@ export default function Signup() {
             }
           />
           <br />
-          <Button
-            type="submit"
-            data-testid="signup-button"
-            disabled={validation}
-          >
-            Join
-          </Button>
+          {isEnable ? (
+            <Button
+              type="submit"
+              data-testid="signup-button"
+              onClick={handleSubmit}
+            >
+              Join
+            </Button>
+          ) : (
+            <Button type="submit" data-testid="signup-button" disabled>
+              Join
+            </Button>
+          )}
         </fieldset>
       </form>
     </>
