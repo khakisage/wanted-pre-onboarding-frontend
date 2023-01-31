@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 import React, { useEffect, useState } from "react";
 import Button from "../Components/Button";
 import { useNavigate } from "react-router-dom";
+import Form from "../Components/Form";
 export default function Signup() {
   const [isEnable, setIsEnabled] = useState(false);
   const [account, setAccount] = useState({
@@ -41,37 +42,10 @@ export default function Signup() {
       })
       .catch((err) => alert("회원가입 실패"));
   };
-  const formStyle = css({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "80vh",
-    "& fieldset": {
-      border: "1px solid grey",
-      "& label": {
-        fontSize: "20px",
-        fontWeight: "bold",
-      },
-      "& input": {
-        width: "300px",
-        height: "30px",
-        margin: "5px",
-        fontSize: "15px",
-        border: "1px solid #afafaf",
-        borderRadius: "5px",
-        "&:focus": {
-          outline: "none",
-          border: "1px solid #e5e5e5",
-          boxShadow: "0 0 5px #2ca9fd",
-        },
-      },
-    },
-  });
 
   return (
     <>
-      <form css={formStyle}>
+      <Form>
         <h1>회원가입</h1>
         <fieldset>
           <label htmlFor="email">Email</label>
@@ -110,7 +84,7 @@ export default function Signup() {
             </Button>
           )}
         </fieldset>
-      </form>
+      </Form>
     </>
   );
 }
