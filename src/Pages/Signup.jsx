@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import React, { useEffect, useState } from "react";
 import Button from "../Components/Button";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +21,7 @@ export default function Signup() {
     validation();
   });
   const url = `https://pre-onboarding-selection-task.shop`;
-  const handleSubmit = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     await fetch(`${url}/auth/signup`, {
       method: "POST",
@@ -74,7 +73,7 @@ export default function Signup() {
             <Button
               type="submit"
               data-testid="signup-button"
-              onClick={handleSubmit}
+              onClick={handleSignup}
             >
               Join
             </Button>
