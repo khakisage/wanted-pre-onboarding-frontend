@@ -34,10 +34,12 @@ export default function Signin() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (res.accessToken) {
-          localStorage.setItem("JWT", res.accessToken);
+        if (res.access_token) {
+          localStorage.setItem("JWT", res.access_token);
+          console.log("성공");
         }
-      });
+      })
+      .catch((err) => alert(err));
   };
 
   return (
