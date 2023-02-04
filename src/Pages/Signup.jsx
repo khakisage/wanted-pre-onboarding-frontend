@@ -54,6 +54,7 @@ export default function Signup() {
             id="email"
             data-testid="email-input"
             value={account.email}
+            autoComplete="off"
             onChange={(e) => setAccount({ ...account, email: e.target.value })}
           />
           <br />
@@ -64,6 +65,7 @@ export default function Signup() {
             id="password"
             data-testid="password-input"
             value={account.password}
+            autoComplete="off"
             onChange={(e) =>
               setAccount({ ...account, password: e.target.value })
             }
