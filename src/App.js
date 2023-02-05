@@ -5,14 +5,15 @@ import Signup from "./Pages/Signup";
 import Todo from "./Pages/Todo";
 import Header from "./Components/Header";
 function App() {
+  let isAuthorized = localStorage.getItem("JWT");
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/todo" element={<Todo />} />
+        <Route path="/signin" element={isAuthorized ? <Todo /> : <Signin />} />
+        <Route path="/signup" element={isAuthorized ? <Todo /> : <Signup />} />
+        <Route path="/todo" element={isAuthorized ? <Todo /> : <Signin />} />
       </Routes>
     </BrowserRouter>
   );
