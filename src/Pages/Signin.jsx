@@ -74,14 +74,14 @@ export default function Signin() {
           {isEnable ? (
             <Button
               type="submit"
-              data-testid="signup-button"
+              data-testid="signin-button"
               onClick={handleSignin}
             >
-              Join
+              Login
             </Button>
           ) : (
-            <Button type="submit" data-testid="signup-button" disabled>
-              Join
+            <Button type="submit" data-testid="signin-button" disabled>
+              Login
             </Button>
           )}
         </fieldset>
