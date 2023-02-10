@@ -1,10 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../Components/Button";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Form from "../Components/Form";
 import ValidationForm from "../Components/ValidationForm";
-import axios from "axios";
 import instance from "../\bAPI/api";
 export default function Signup() {
   const [emailError, setEmailError] = useState(false);
@@ -39,7 +38,6 @@ export default function Signup() {
       setEmailError(false);
     }
   };
-  // useEffect(() => {
   //   const token = localStorage.getItem("JWT");
   //   setJwt(token);
   // }, []);

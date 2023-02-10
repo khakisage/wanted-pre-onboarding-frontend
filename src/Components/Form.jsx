@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 import { css } from "@emotion/react";
-export default function Form({ children, onClick }) {
+export default function Form({ children }) {
   const formStyle = css({
     display: "flex",
     flexDirection: "column",

@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import React from "react";
 import { useState, useEffect } from "react";
 import Form from "../Components/Form";
 import Button from "../Components/Button";

@@ -2,6 +2,5 @@
 // import { css } from "@emotion/react";
 
 export default function Main() {
-  // const pink = css({ color: "hotpink" });
-  return <div>Main</div>;
+  return <div>이곳은 메인입니다.</div>;
 }
