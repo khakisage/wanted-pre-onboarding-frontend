@@ -3,7 +3,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Form from "../Components/Form";
 import Button from "../Components/Button";
+import { useNavigate } from "react-router-dom";
 export default function Signin() {
+  const navigate = useNavigate();
   const [isEnable, setIsEnabled] = useState(false);
   const [account, setAccount] = useState({
     email: "",
@@ -37,6 +39,7 @@ export default function Signin() {
         if (res.access_token) {
           localStorage.setItem("JWT", res.access_token);
           console.log("성공");
+          navigate("/todo");
         }
       })
       .catch((err) => alert(err));
