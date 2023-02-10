@@ -22,11 +22,19 @@ export default function Header() {
   const moveToTodo = () => {
     navigate("/todo");
   };
+  const logout = () => {
+    localStorage.removeItem("JWT");
+    navigate("/");
+  };
 
   return (
     <div css={header}>
       <Button onClick={moveToSignup}>회원가입</Button>
-      <Button onClick={moveToSignin}>로그인</Button>
+      {localStorage.getItem("JWT") ? (
+        <Button onClick={logout}>로그아웃</Button>
+      ) : (
+        <Button onClick={moveToSignin}>로그인</Button>
+      )}
       <Button onClick={moveToTodo}>todo</Button>
     </div>
   );

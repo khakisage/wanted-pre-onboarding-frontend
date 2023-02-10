@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 import { css } from "@emotion/react";
 export default function Form({ children }) {
   const formStyle = css({
@@ -25,6 +24,20 @@ export default function Form({ children }) {
           outline: "none",
           border: "1px solid #e5e5e5",
           boxShadow: "0 0 5px #2ca9fd",
+        },
+      },
+      "& button": {
+        width: "50px",
+        margin: "1px",
+        height: "33px",
+        borderRadius: "5px",
+        "&:hover": {
+          backgroundColor: "grey",
+          color: "white",
+        },
+        "&:active": {
+          backgroundColor: "black",
+          color: "white",
         },
       },
     },

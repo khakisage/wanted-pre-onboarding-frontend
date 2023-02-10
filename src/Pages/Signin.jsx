@@ -1,9 +1,9 @@
-/** @jsxImportSource @emotion/react */
-import React from "react";
 import { useState, useEffect } from "react";
 import Form from "../Components/Form";
 import Button from "../Components/Button";
+import { useNavigate } from "react-router-dom";
 export default function Signin() {
+  const navigate = useNavigate();
   const [isEnable, setIsEnabled] = useState(false);
   const [account, setAccount] = useState({
     email: "",
@@ -37,6 +37,7 @@ export default function Signin() {
         if (res.access_token) {
           localStorage.setItem("JWT", res.access_token);
           console.log("성공");
+          navigate("/todo");
         }
       })
       .catch((err) => alert(err));
@@ -54,6 +55,7 @@ export default function Signin() {
             id="email"
             data-testid="email-input"
             value={account.email}
+            autoComplete="off"
             onChange={(e) => setAccount({ ...account, email: e.target.value })}
           />
           <br />
@@ -64,6 +66,7 @@ export default function Signin() {
             id="password"
             data-testid="password-input"
             value={account.password}
+            autoComplete="off"
             onChange={(e) =>
               setAccount({ ...account, password: e.target.value })
             }
@@ -72,14 +75,14 @@ export default function Signin() {
           {isEnable ? (
             <Button
               type="submit"
-              data-testid="signup-button"
+              data-testid="signin-button"
               onClick={handleSignin}
             >
-              Join
+              Login
             </Button>
           ) : (
-            <Button type="submit" data-testid="signup-button" disabled>
-              Join
+            <Button type="submit" data-testid="signin-button" disabled>
+              Login
             </Button>
           )}
         </fieldset>

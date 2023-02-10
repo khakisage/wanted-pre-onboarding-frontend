@@ -1,19 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "./Pages/Main";
-import Signin from "./Pages/Signin";
-import Signup from "./Pages/Signup";
-import Todo from "./Pages/Todo";
+import { BrowserRouter } from "react-router-dom";
 import Header from "./Components/Header";
+import Router from "./Utils/Routes";
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/todo" element={<Todo />} />
-      </Routes>
+      <Router />
     </BrowserRouter>
   );
 }
