@@ -21,6 +21,19 @@ export default function Button({ children, onClick, disabled }) {
       backgroundColor: "black",
       color: "white",
     },
+    "&:disabled": {
+      backgroundColor: "white",
+      color: "lightgrey",
+      cursor: "not-allowed",
+      "&:hover": {
+        backgroundColor: "white",
+        color: "lightgrey",
+      },
+      "&:active": {
+        backgroundColor: "white",
+        color: "lightgrey",
+      },
+    },
   });
   return (
     <button css={btnStyle} onClick={onClick} disabled={disabled}>
