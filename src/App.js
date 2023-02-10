@@ -1,20 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "./Pages/Main";
-import Signin from "./Pages/Signin";
-import Signup from "./Pages/Signup";
-import Todo from "./Pages/Todo";
+import { BrowserRouter } from "react-router-dom";
 import Header from "./Components/Header";
+import Router from "./Utils/Routes";
 function App() {
-  let isAuthorized = localStorage.getItem("JWT");
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/signin" element={isAuthorized ? <Todo /> : <Signin />} />
-        <Route path="/signup" element={isAuthorized ? <Todo /> : <Signup />} />
-        <Route path="/todo" element={isAuthorized ? <Todo /> : <Signin />} />
-      </Routes>
+      <Router />
     </BrowserRouter>
   );
 }
